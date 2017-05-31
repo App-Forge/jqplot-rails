@@ -226,6 +226,17 @@
                 td1 = td2 = div0 = div1 = null;   
             }
         }
+
+        hide = $('<input type="checkbox" style="position:absolute; top:5px; right:5px;" checked="true">')
+        hide.bind('change', function() {
+            if($(this).is(':checked')) {
+                $(this).parent().find('tr').fadeIn()
+            } else {
+                $(this).parent().find('tr').fadeOut()
+            }
+        })
+        hide.appendTo(this._elem)
+        
         return this._elem;
     };
 
