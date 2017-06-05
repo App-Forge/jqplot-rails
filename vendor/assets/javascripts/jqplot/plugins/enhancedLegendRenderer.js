@@ -167,6 +167,10 @@
                             td2 = $(document.createElement('td'));
                             td2.addClass('jqplot-table-legend jqplot-table-legend-label');
                             td2.css('paddingTop', rs);
+
+                            td3 = $(document.createElement('td'));
+                            td3.addClass('jqplot-table-legend legend-switcher');
+                            td3.css('paddingTop', rs);
                     
                             // td1 = $('<td class="jqplot-table-legend" style="text-align:center;padding-top:'+rs+';">'+
                             //     '<div><div class="jqplot-table-legend-swatch" style="background-color:'+color+';border-color:'+color+';"></div>'+
@@ -217,6 +221,8 @@
                                 }
                             }
                             
+                            td3.appendTo(tr);
+
                             pad = true;
                         }
                     }
@@ -225,14 +231,22 @@
                 
                 td1 = td2 = div0 = div1 = null;   
             }
+
+            legend_tr = $('<tr><td></td><td class="jqplot-table-legend jqplot-table-legend-label" style="paddingTop:'+rs+'">Legend</td><td class="jqplot-table-legend legend-switcher"></td></tr>');
+            legend_tr.addClass('jqplot-table-legend legend-text hide');
+            legend_tr.appendTo(this._elem);
         }
 
         hide = $('<input type="checkbox" style="position:absolute; top:5px; right:5px;" checked="true">')
         hide.bind('change', function() {
+            self = this
+
             if($(this).is(':checked')) {
-                $(this).parent().find('tr').fadeIn()
+                $(this).parent().find('tr').show();
+                $(this).parent().find('tr.legend-text').hide().addClass('hide');
             } else {
-                $(this).parent().find('tr').fadeOut()
+                $(this).parent().find('tr').hide();
+                $(this).parent().find('tr.legend-text').show().removeClass('hide');
             }
         })
         hide.appendTo(this._elem)
