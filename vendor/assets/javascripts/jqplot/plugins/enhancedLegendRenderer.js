@@ -169,9 +169,9 @@
                             td2.css('paddingTop', rs);
 
                             td3 = $(document.createElement('td'));
-                            td3.addClass('jqplot-table-legend legend-switcher');
+                            td3.addClass('legend-switcher');
                             td3.css('paddingTop', rs);
-                    
+
                             // td1 = $('<td class="jqplot-table-legend" style="text-align:center;padding-top:'+rs+';">'+
                             //     '<div><div class="jqplot-table-legend-swatch" style="background-color:'+color+';border-color:'+color+';"></div>'+
                             //     '</div></td>');
@@ -232,9 +232,9 @@
                 td1 = td2 = div0 = div1 = null;   
             }
 
-            legend_tr = $('<tr><td></td><td class="jqplot-table-legend jqplot-table-legend-label" style="paddingTop:'+rs+'">Legend</td><td class="jqplot-table-legend legend-switcher"></td></tr>');
+            legend_tr = $('<tr><td></td><td class="jqplot-table-legend-label" style="paddingTop:'+rs+'">Legend</td><td class="legend-switcher"></td></tr>');
             legend_tr.addClass('jqplot-table-legend legend-text hide');
-            legend_tr.appendTo(this._elem);
+            legend_tr.prependTo(this._elem);
         }
 
         hide = $('<input type="checkbox" style="position:absolute; top:1px; right:3px;" checked="true">')
@@ -298,18 +298,18 @@
                     // Not sure if there is a better way to check for showSwatches and showLabels === true.
                     // Test for "undefined" since default values for both showSwatches and showLables is true.
                     if (typeof plot.options.legend.showSwatches === 'undefined' || plot.options.legend.showSwatches === true) {
-                        plot.legend._elem.find('td').eq(sidx * 2).addClass('jqplot-series-hidden');
+                        plot.legend._elem.find('td.jqplot-table-legend').eq(sidx * 2).addClass('jqplot-series-hidden');
                     }
                     if (typeof plot.options.legend.showLabels === 'undefined' || plot.options.legend.showLabels === true) {
-                        plot.legend._elem.find('td').eq((sidx * 2) + 1).addClass('jqplot-series-hidden');
+                        plot.legend._elem.find('td.jqplot-table-legend').eq((sidx * 2) + 1).addClass('jqplot-series-hidden');
                     }
                 }
                 else {
                     if (typeof plot.options.legend.showSwatches === 'undefined' || plot.options.legend.showSwatches === true) {
-                        plot.legend._elem.find('td').eq(sidx * 2).removeClass('jqplot-series-hidden');
+                        plot.legend._elem.find('td.jqplot-table-legend').eq(sidx * 2).removeClass('jqplot-series-hidden');
                     }
                     if (typeof plot.options.legend.showLabels === 'undefined' || plot.options.legend.showLabels === true) {
-                        plot.legend._elem.find('td').eq((sidx * 2) + 1).removeClass('jqplot-series-hidden');
+                        plot.legend._elem.find('td.jqplot-table-legend').eq((sidx * 2) + 1).removeClass('jqplot-series-hidden');
                     }
                 }
 
