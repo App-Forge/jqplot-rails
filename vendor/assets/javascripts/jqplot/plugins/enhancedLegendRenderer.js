@@ -237,7 +237,7 @@
             legend_tr.appendTo(this._elem);
         }
 
-        hide = $('<input type="checkbox" style="position:absolute; top:1px; right:5px;" checked="true">')
+        hide = $('<input type="checkbox" style="position:absolute; top:1px; right:3px;" checked="true">')
         hide.bind('change', function() {
             self = this
 
